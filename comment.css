@@ -1,0 +1,128 @@
+/* Reset some default styles */
+body, h1, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    width: 97%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.user-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007BFF; /* Highlighted color */
+}
+
+.comment-score {
+    font-size: 16px;
+    
+}
+
+.progress-bar {
+    flex: 1;
+    height: 12px;
+    background-color: #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-left: 10px;
+}
+
+.progress {
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    width: 0;
+    transition: width 0.5s ease-in-out;
+}
+
+.progress span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 12px;
+}
+
+#setMaxButton {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#setMaxButton:hover {
+    background-color: #0056b3;
+}
+
+@media only screen and (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    #searchInput {
+        margin-bottom: 10px;
+    }
+
+    li {
+        margin-top: 20px;
+    }
+
+    .progress-bar {
+        margin-left: 0;
+    }
+    #searchInput {
+        width: 94%;
+    }
+}
