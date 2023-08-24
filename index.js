@@ -20,6 +20,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 // Function to display users from Firestore
+// Function to display users from Firestore
 function displayUsersFromFirestore() {
     userList.innerHTML = '';
 
@@ -30,12 +31,24 @@ function displayUsersFromFirestore() {
 
     usersCollection.get()
         .then((querySnapshot) => {
+            // Create an array to hold the users
+            const usersArray = [];
+
             querySnapshot.forEach((doc) => {
                 const user = doc.data();
 
                 // Ensure the progress stays within the 0-maxProgress range
-                const progress = Math.min(Math.max(user.progress, 0), maxProgress);
+                user.progress = Math.min(Math.max(user.progress, 0), maxProgress);
 
+                // Add the user to the array
+                usersArray.push(user);
+            });
+
+            // Sort the users by progress in descending order
+            usersArray.sort((a, b) => b.progress - a.progress);
+
+            // Render the sorted users
+            usersArray.forEach((user) => {
                 if (user.name.toLowerCase().includes(searchTerm) || searchTerm === '') {
                     const li = document.createElement('li');
                     li.innerHTML = `
@@ -44,7 +57,7 @@ function displayUsersFromFirestore() {
                             <span class="comment-score">Comment Score: ${user.progress}</span>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress" style="width: ${progress * (100 / maxProgress)}%">
+                            <div class="progress" style="width: ${user.progress * (100 / maxProgress)}%">
                             </div>
                         </div>
                     `;
@@ -56,6 +69,7 @@ function displayUsersFromFirestore() {
             console.error('Error getting documents: ', error);
         });
 }
+
 
 
 // Initial display
